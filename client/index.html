@@ -1,0 +1,73 @@
+<head>
+  <title>#CapitalOne Instagram Data Challenge</title>
+
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <h1 class="capitalOne">20 Most Recent <span class="capitalOneSecondary">#CapitalOne</span> Instagram Posts</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by... <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="likes"><a href="">Likes</a></li>
+                    <li class="time"><a href="">Time Posted</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+      <br/>
+  </div>
+  <div class="container">
+      {{> latestPosts}}
+      <br/>
+      <div class="row">
+          <h4 class="text-center">By Steven Truong!</h4>
+      </div>
+  </div>
+</body>
+
+<template name="latestPosts">
+    {{#each posts}}
+        {{> latestPostsRow}}
+    {{/each}}
+</template>
+
+<template name="latestPostsRow">
+    <div class="row">
+        {{#each row}}
+            {{> post}}
+        {{/each}}
+    </div>
+</template>
+
+<template name="post">
+    {{preparePost user.id id caption.text}}
+    <div class="col-sm-3">
+        <div class="thumbnail {{sentiment id}}">
+            <a target="_blank" href="{{link}}"><img src="{{images.thumbnail.url}}" alt=""/></a>
+            <div class="caption">
+            <span class="label label-success pull-left">
+                {{likes.count}}
+                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            </span>
+            <span class="label label-success pull-right">
+                1 of {{numPosts user.id}} posts
+            </span>
+            </div>
+            <h4 class="text-center">{{user.username}}</h4>
+            <p>
+                who has <span>{{numFollowers user.id}}</span> followers and follows
+                <span>{{numFollowing user.id}}</span> people.
+            </p>
+        </div>
+    </div>
+</template>

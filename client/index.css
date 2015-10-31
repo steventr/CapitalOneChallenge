@@ -1,0 +1,17 @@
+/* CSS declarations go here */
+.capitalOne {
+    color: #003A6F;
+}
+.capitalOneSecondary {
+    color: #A12830;
+}
+
+.positive {
+    border-color: #5cb85c;
+}
+.negative {
+    border-color: #d9534f;
+}
+.neutral {
+    border-color: #5bc0de;
+}
